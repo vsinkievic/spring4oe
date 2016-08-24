@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="OpenEdge InjectABL Library">
+    <property file="build.properties" />
+    <property name="appRoot" value="." />
+    <property name="projectRoot" value="${appRoot}" />
+	
+    <!-- Common, property-driven tasks are in build-common.xml (eg. doc, package, bundle) -->
+    <import file="build-common-1.0.xml"/>
+	
+	<!-- Builds/compiles the library -->
+	<target name="build">
+		
+        <mkdir dir="${buildRoot}"/>
+        <mkdir dir="${buildRoot}/bin"/>
+		<mkdir dir="${buildRoot}/preprocess"/>
+		
+		<PCTCompileExt dlcHome="${DLC}"
+                  graphicalMode="false"
+                  destDir="${buildRoot}/bin" 
+                  cpStream="UTF-8" 
+                  preprocessDir="${buildRoot}/bin/preprocess"
+                  forceCompile="true">
+			
+			<propath>
+                <pathelement path="${projectRoot}/src"/>
+			</propath>
+			
+			<fileset dir="${projectRoot}/src">
+				<include name="**/*.p" />
+				<include name="**/*.w" />
+				<include name="**/*.cls" />
+			</fileset>
+			
+			<!--
+			<fileset dir="${projectRoot}/tests">
+				<include name="**/*.p" />
+				<include name="**/*.w" />
+				<include name="**/*.cls" />
+			</fileset>
+			-->
+		</PCTCompileExt>
+	</target>
+	
+</project>

@@ -1,0 +1,4 @@
+Library-Name : Spring like dependency injection framework
+Library-Version : 1.0.0
+Build-date   	: 2016-08-24T19:47:08.984+0300
+OpenEdge-Version: OpenEdge Release 11.6.2 as of Fri May 20 19:01:25 EDT 2016
