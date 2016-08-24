@@ -2,6 +2,8 @@
 using bfv.spring4oe.beans.factory.AbstractBeanFactory.
 using bfv.spring4oe.beans.factory.IBeanDefinitionReader.
 using bfv.spring4oe.beans.factory.XmlBeanDefinitionReader.
+using bfv.spring4oe.beans.factory.XmlBeanFactory.
+
 using bfv.spring4oe.misc.Logger.
 
 block-level on error undo, throw.
@@ -9,6 +11,7 @@ block-level on error undo, throw.
 
 class bfv.spring4oe.beans.factory.XmlBeanFactory inherits AbstractBeanFactory:
   
+  def public static property CURRENT_FACTORY as XmlBeanFactory get. private set.
     
   constructor public XmlBeanFactory(xmlfile as character):
     
@@ -17,6 +20,7 @@ class bfv.spring4oe.beans.factory.XmlBeanFactory inherits AbstractBeanFactory:
     loadBeansDefinitions(xmlfile).
     BeansFactoryPostProcessing().
         
+    CURRENT_FACTORY = THIS-OBJECT.    
   end.
   
   
