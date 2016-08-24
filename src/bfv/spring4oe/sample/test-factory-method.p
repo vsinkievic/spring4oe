@@ -11,7 +11,7 @@ define variable obj as Object no-undo.
 
 define variable factory as IBeanFactory no-undo.
 
-factory = new XmlBeanFactory("./bfv/spring4oe/sample/beans.xml").
+factory = new XmlBeanFactory(search("bfv/spring4oe/sample/beans.xml")).
 
 obj = factory:GetBean("factmeth").
 

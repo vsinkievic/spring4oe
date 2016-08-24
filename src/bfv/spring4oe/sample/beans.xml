@@ -6,7 +6,7 @@
   <bean id="logger" class="bfv.spring4oe.misc.Logger" />
     
   <bean id="applogger" class="bfv.spring4oe.sample.AppLogger" init-method="InitLogger">
-    <property name="LogFilename" value="./../../log/app.log"/>
+    <property name="LogFilename" value="app.log"/>
   </bean>
     
   <bean id="sessman" class="bfv.spring4oe.sample.SessionManager" init-method="InitObject">

@@ -11,7 +11,7 @@ define variable logger as ILogging no-undo.
 define variable logger2 as ILogging no-undo.
 
 
-factory = new XmlBeanFactory("./bfv/spring4oe/sample/beans.xml").
+factory = new XmlBeanFactory(search("bfv/spring4oe/sample/beans.xml")).
 
 logger = cast(factory:GetBean("applogger"), "ILogging").
 logger2 = cast(factory:GetBean("applogger"), "ILogging").

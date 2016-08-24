@@ -1,7 +1,10 @@
 
-using Progress.Lang.Object from propath.
+using Progress.Lang.Object.
 using bfv.spring4oe.beans.factory.XmlBeanFactory from propath.
 using bfv.spring4oe.beans.factory.IBeanFactory from propath.
+
+
+block-level on error undo, throw.
 
 define variable obj1 as Object no-undo.
 define variable obj2 as Object no-undo.
@@ -9,7 +12,7 @@ define variable obj3 as Object no-undo.
 
 define variable factory as IBeanFactory no-undo.
 
-factory = new XmlBeanFactory("./bfv/spring4oe/sample/beans.xml").
+factory = new XmlBeanFactory(search("bfv/spring4oe/sample/beans.xml")).
 
 obj1 = factory:GetBean("pablo").
 obj2 = factory:GetBean("pablo").

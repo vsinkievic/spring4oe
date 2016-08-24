@@ -10,6 +10,6 @@ define variable factory as IBeanFactory no-undo.
 define variable sessman as SessionManager no-undo.
 
 
-factory = new XmlBeanFactory("./bfv/spring4oe/sample/beans.xml").
+factory = new XmlBeanFactory(search("bfv/spring4oe/sample/beans.xml")).
 
 sessman = cast(factory:GetBean("sessman"), "SessionManager").
