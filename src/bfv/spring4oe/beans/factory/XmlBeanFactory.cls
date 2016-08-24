@@ -10,8 +10,6 @@ block-level on error undo, throw.
 
 
 class bfv.spring4oe.beans.factory.XmlBeanFactory inherits AbstractBeanFactory:
-  
-  def public static property CURRENT_FACTORY as XmlBeanFactory get. private set.
     
   constructor public XmlBeanFactory(xmlfile as character):
     
@@ -20,7 +18,6 @@ class bfv.spring4oe.beans.factory.XmlBeanFactory inherits AbstractBeanFactory:
     loadBeansDefinitions(xmlfile).
     BeansFactoryPostProcessing().
         
-    CURRENT_FACTORY = THIS-OBJECT.    
   end.
   
   
@@ -42,5 +39,5 @@ class bfv.spring4oe.beans.factory.XmlBeanFactory inherits AbstractBeanFactory:
     reader:LoadDefinitions(filecontent).
     
   end method.
-  
+
 end class.

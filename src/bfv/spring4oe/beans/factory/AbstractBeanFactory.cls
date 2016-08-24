@@ -15,6 +15,8 @@ using Progress.Lang.Object.
 class bfv.spring4oe.beans.factory.AbstractBeanFactory implements IBeanFactory abstract:
   
   {bfv/spring4oe/beans/factory/ttregisteredbean.i &accessor=protected}
+    
+  def public static property DefaultFactory as IBeanFactory get. protected set.
   
   define protected property Registry as IBeanRegistry no-undo get. set.
   define protected property Reader as IBeanDefinitionReader no-undo get. set.
@@ -153,5 +155,11 @@ class bfv.spring4oe.beans.factory.AbstractBeanFactory implements IBeanFactory ab
   method protected void BeansFactoryPostProcessing():
     Registry:CalcDependencies().
   end method. 
+
+	METHOD PUBLIC VOID SetAsDefault(  ):
+		
+		DefaultFactory = this-object.
+
+	END METHOD.
     
 end class.

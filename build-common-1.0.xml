@@ -89,6 +89,11 @@
         <delete dir="${buildRoot}/bin/preprocess" />
         <!-- Remove the .pct directory -->
         <delete dir="${buildRoot}/bin/.pct" />
+        <delete includeemptydirs="true">
+		    <fileset dir="${buildRoot}/">
+		        <include name="bin/**" />
+		    </fileset>
+		</delete>
     </target>
     
 	<target name="bundle" depends="build,package">

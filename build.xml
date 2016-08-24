@@ -14,14 +14,15 @@
         <mkdir dir="${buildRoot}/bin"/>
 		<mkdir dir="${buildRoot}/preprocess"/>
 		
-		<PCTCompileExt dlcHome="${DLC}"
+		<PCTCompile dlcHome="${DLC}"
                   graphicalMode="false"
                   destDir="${buildRoot}/bin" 
                   cpStream="UTF-8" 
-                  preprocessDir="${buildRoot}/bin/preprocess"
+                  preprocessDir="${buildRoot}/preprocess"
                   forceCompile="true">
 			
 			<propath>
+                <pathelement path="${buildRoot}/bin"/>
                 <pathelement path="${projectRoot}/src"/>
 			</propath>
 			
@@ -38,7 +39,7 @@
 				<include name="**/*.cls" />
 			</fileset>
 			-->
-		</PCTCompileExt>
+		</PCTCompile>
 	</target>
 	
 </project>

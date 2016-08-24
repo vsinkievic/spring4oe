@@ -43,6 +43,30 @@ factory = new XmlBeanFactory("./bfv/spring4oe/sample/beans.xml").
 
 logger = cast(factory:GetBean("applogger"), "ILogging").
 ```
+If you want to use DefaultFactory property you need to set default factory first:
+```
+using bfv.spring4oe.beans.factory.XmlBeanFactory from propath.
+using bfv.spring4oe.beans.factory.IBeanFactory from propath.
+using bfv.spring4oe.sample.ILogging from propath.
+
+define variable factory as IBeanFactory no-undo.
+define variable logger as ILogging no-undo.
+
+factory = new XmlBeanFactory("./bfv/spring4oe/sample/beans.xml").
+factory:SetAsDefault().
+
+logger = cast(factory:GetBean("applogger"), "ILogging").
+```
+Now you can use DefaultFactory:
+```
+using bfv.spring4oe.beans.factory.XmlBeanFactory from propath.
+using bfv.spring4oe.sample.ILogging from propath.
+
+define variable logger as ILogging no-undo.
+
+logger = cast(XmlBeanFactory:DefaultFactory:GetBean("applogger"), "ILogging").
+```
+
 ### Setting a property
 It is also possible to set a (public) property of a class. Our AppLogger class for example has a LogFilename property which allows us to set the filename to which is logged. Setting this property look like this:
 ```xml
