@@ -13,6 +13,8 @@ using Progress.Lang.Object.
 using bfv.spring4oe.beans.factory.XmlBeanFactory from propath.
 using OpenEdge.Core.Assert from propath.
 using bfv.spring4oe.tests.IUnitTestable from propath.
+using bfv.spring4oe.tests.BeanA from propath.
+using bfv.spring4oe.tests.BeanB from propath.
 
 block-level on error undo, throw.
 
@@ -22,7 +24,7 @@ class bfv.spring4oe.tests.Spring4OE_TC:
   
   @Before.
 	method public void SetupBeforeClass(  ):
-		factory = new XmlBeanFactory("./bfv/spring4oe/tests/testcases.xml").
+		factory = new XmlBeanFactory(search("bfv/spring4oe/tests/testcases.xml")).
 	end method.
 	
 	@test.
@@ -134,5 +136,21 @@ class bfv.spring4oe.tests.Spring4OE_TC:
     Assert:Equals(obj:Ref:Value, "ValueIsSet").
     
   end method.
+  
+  @test.
+  method public void Resolves_circular_dependencies(): 
+      
+      define variable a as BeanA no-undo.
+      define variable b as BeanB no-undo.
+      
+      a = cast(factory:GetBean("beanA"), "bfv.spring4oe.tests.BeanA").
+      b = cast(factory:GetBean("beanB"), "bfv.spring4oe.tests.BeanB").
+      
+      Assert:NotNull(a).
+      Assert:NotNull(b).
+      Assert:isTrue(a:Equals(b:beanA)).
+      Assert:isTrue(b:Equals(a:beanB)).
+      
+  end.
   
 end class.

@@ -17,5 +17,13 @@
     <property name="Ref" ref="initobject" />
   </bean>
   
+  <bean id="beanA" class="bfv.spring4oe.tests.BeanA">
+    <property name="beanB" ref="beanB" />
+  </bean>
+
+  <bean id="beanB" class="bfv.spring4oe.tests.BeanB">
+    <property name="beanA" ref="beanA" />
+  </bean>
+
 </beans>  
   
