@@ -55,7 +55,7 @@ class bfv.spring4oe.beans.factory.AbstractBeanRegistry
     
     find ttregisteredbean where ttregisteredbean.beanname = beanNameIn no-error.
     if (not avail ttregisteredbean) then 
-      undo, throw new bfv.spring4oe.beans.factory.NoSuchBeanDefinitionException().
+      undo, throw new bfv.spring4oe.beans.factory.NoSuchBeanDefinitionException(beanNameIn).
       
     beanDef = cast(ttregisteredbean.beandefinition, "IBeanDefinition").
     

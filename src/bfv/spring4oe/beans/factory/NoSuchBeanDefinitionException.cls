@@ -9,5 +9,9 @@ class bfv.spring4oe.beans.factory.NoSuchBeanDefinitionException inherits BeansEx
   constructor public NoSuchBeanDefinitionException():
     super("NoSuchBeanDefinitionException").
   end.
+
+  constructor public NoSuchBeanDefinitionException(pcMessage as char):
+    super(subst("NoSuchBeanDefinitionException: &1", pcMessage)).
+  end.
   
 end class.
