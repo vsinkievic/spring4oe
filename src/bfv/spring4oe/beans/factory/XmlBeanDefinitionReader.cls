@@ -39,7 +39,7 @@ class bfv.spring4oe.beans.factory.XmlBeanDefinitionReader inherits AbstractBeanD
     
     if (not successful) then do:
       Logger:Information("Loading XML failed").
-      undo, throw new bfv.spring4oe.beans.factory.NoSuchBeanDefinitionException().
+      undo, throw new bfv.spring4oe.beans.factory.NoSuchBeanDefinitionException("Loading XML failed").
     end.
     else 
       Logger:Information("Loading XML OK").
