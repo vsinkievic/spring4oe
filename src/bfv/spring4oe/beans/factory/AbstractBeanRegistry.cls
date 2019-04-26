@@ -95,7 +95,14 @@ class bfv.spring4oe.beans.factory.AbstractBeanRegistry
     end.  /* for each ttregisteredbean */
     
     for each ttdependency:
-      find ttregisteredbean where ttregisteredbean.beanname = ttdependency.references.
+      find ttregisteredbean where ttregisteredbean.beanname = ttdependency.references no-error.
+      if not available ttRegisteredbean
+      then do: 
+          def var cMessage as char no-undo.
+          cMessage = subst("Failed to find bean '&1' refereced by '&2'!", ttDependency.references, ttDependency.beanname).
+          Logger:Information(cMessage).
+          undo, throw new bfv.spring4oe.beans.factory.NoSuchBeanDefinitionException(cMessage).
+      end.
       ttregisteredbean.referenced = ttregisteredbean.referenced + 1.
     end.
     
