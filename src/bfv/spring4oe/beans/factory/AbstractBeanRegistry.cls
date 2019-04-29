@@ -103,7 +103,7 @@ class bfv.spring4oe.beans.factory.AbstractBeanRegistry
           Logger:Information(cMessage).
 //          undo, throw new bfv.spring4oe.beans.factory.NoSuchBeanDefinitionException(cMessage).
       end.
-      ttregisteredbean.referenced = ttregisteredbean.referenced + 1.
+      else ttregisteredbean.referenced = ttregisteredbean.referenced + 1.
     end.
     
     for each ttregisteredbean:
