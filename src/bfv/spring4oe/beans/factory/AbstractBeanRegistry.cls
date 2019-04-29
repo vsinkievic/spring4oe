@@ -99,9 +99,9 @@ class bfv.spring4oe.beans.factory.AbstractBeanRegistry
       if not available ttRegisteredbean
       then do: 
           def var cMessage as char no-undo.
-          cMessage = subst("Failed to find bean '&1' refereced by '&2'!", ttDependency.references, ttDependency.beanname).
+          cMessage = subst("WARNING: Failed to find bean '&1' refereced by '&2'!", ttDependency.references, ttDependency.beanname).
           Logger:Information(cMessage).
-          undo, throw new bfv.spring4oe.beans.factory.NoSuchBeanDefinitionException(cMessage).
+//          undo, throw new bfv.spring4oe.beans.factory.NoSuchBeanDefinitionException(cMessage).
       end.
       ttregisteredbean.referenced = ttregisteredbean.referenced + 1.
     end.
